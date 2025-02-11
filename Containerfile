@@ -1,5 +1,7 @@
 FROM quay.io/toolbx/arch-toolbox AS arch-distrobox
 
+RUN sed -i 's|^Server=.*|Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch|' /etc/pacman.d/mirrorlis
+
 # Pacman Initialization
 # Create build user
 RUN sed -i 's/#Color/Color/g' /etc/pacman.conf && \
@@ -65,6 +67,8 @@ RUN pacman -S \
         vulkan-intel \
         vte-common \
         vulkan-radeon \
+        fish \
+        starship \
         --noconfirm && \
     rm -rf /var/cache/pacman/pkg/*
 
