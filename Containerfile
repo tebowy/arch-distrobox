@@ -68,6 +68,7 @@ RUN pacman -S \
         vte-common \
         vulkan-radeon \
         fish \
+        base-devel \
         starship \
         --noconfirm && \
     rm -rf /var/cache/pacman/pkg/*
@@ -80,9 +81,9 @@ RUN git clone https://aur.archlinux.org/paru-bin.git --single-branch && \
     makepkg -si --noconfirm && \
     cd .. && \
     rm -drf paru-bin
-#    paru -S \
-#        aur/placeholder \
-#        --noconfirm
+    paru -S \
+        aur/airdcpp-webclient \
+        --noconfirm
 USER root
 WORKDIR /
 
