@@ -1,5 +1,7 @@
 FROM quay.io/toolbx/arch-toolbox AS arch-distrobox
 
+RUN printf "Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch" | tee  /etc/pacman.d/mirrorlist
+
 
 # Pacman Initialization
 # Create build user
@@ -21,7 +23,7 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
     chmod +x /usr/bin/host-spawn && \
     rm -drf /tmp/distrobox
 
-RUN printf "Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch" | tee -a /etc/pacman.d/mirrorlist
+RUN printf "Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch" | tee  /etc/pacman.d/mirrorlist
 
 
 # Install packages Distrobox adds automatically, this speeds up first launch
