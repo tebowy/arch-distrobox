@@ -1,6 +1,6 @@
 FROM quay.io/toolbx/arch-toolbox AS arch-distrobox
 
-RUN sed -i 's|^Server=.*|Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch|' /etc/pacman.d/mirrorlis
+RUN sed -i 's|^Server=.*|Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch|' /etc/pacman.d/mirrorlist
 
 # Pacman Initialization
 # Create build user
