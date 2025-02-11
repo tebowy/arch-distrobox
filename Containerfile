@@ -1,6 +1,6 @@
 FROM quay.io/toolbx/arch-toolbox AS arch-distrobox
 
-RUN printf "Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch" | tee  /etc/pacman.d/mirrorlist
+RUN printf "Server=https://archive.archlinux.org/repos/2025/01/15/\$repo/os/\$arch" | tee  /etc/pacman.d/mirrorlist
 
 
 # Pacman Initialization
@@ -22,8 +22,6 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
     wget https://github.com/1player/host-spawn/releases/download/$(cat /tmp/distrobox/distrobox-host-exec | grep host_spawn_version= | cut -d "\"" -f 2)/host-spawn-$(uname -m) -O /usr/bin/host-spawn && \
     chmod +x /usr/bin/host-spawn && \
     rm -drf /tmp/distrobox
-
-RUN printf "Server=https://archive.archlinux.org/repos/2025/01/15/$repo/os/$arch" | tee  /etc/pacman.d/mirrorlist
 
 
 # Install packages Distrobox adds automatically, this speeds up first launch
